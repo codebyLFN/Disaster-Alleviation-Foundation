@@ -36,6 +36,8 @@ namespace Disaster_Alleviation_Foundation.Controllers
             }
 
             var disaster = await _context.Disaster
+                .Include(d => d.MonetaryAllocation)
+                .Include(d => d.GoodsAllocation)
                 .FirstOrDefaultAsync(m => m.DisasterId == id);
             if (disaster == null)
             {

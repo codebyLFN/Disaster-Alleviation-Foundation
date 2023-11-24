@@ -14,7 +14,7 @@ namespace Disaster_Alleviation_Foundation.Models
         public bool IsActive { get; set; }
 
         //List allocated goods and monetary
-        public List<MonetaryAllocation>? MonetaryAllocations { get; set; }
+        public List<MonetaryAllocation>? MonetaryAllocation { get; set; }
 
         public List<GoodsAllocation>? GoodsAllocation { get; set; }
     }

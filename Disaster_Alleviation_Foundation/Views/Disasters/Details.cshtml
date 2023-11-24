@@ -1,5 +1,6 @@
 ﻿@model Disaster_Alleviation_Foundation.Models.Disaster
 
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -40,6 +41,9 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.RequiredAid)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IsActive)
         </dd>
@@ -50,13 +54,17 @@
     Allocated Money
 </dt>
 <dd class="col-sm-10">
-    @if (Model.MonetaryAllocations != null)
+    @if (Model.MonetaryAllocation != null)
     {
-        foreach (var allocation in Model.MonetaryAllocations)
+        foreach (var allocation in Model.MonetaryAllocation)
         {
             @Html.DisplayFor(model => allocation.Amount)
             <br />
         }
+    }
+    else
+    {
+        <p>No money allocated</p>
     }
 </dd>
 
@@ -70,7 +78,11 @@
         {
             @Html.DisplayFor(model => allocation.ItemCount)
         }
+    }else
+    {
+        <p>No goods allocated</p>
     }
+    
 </dd>
 
 <div class="container">
