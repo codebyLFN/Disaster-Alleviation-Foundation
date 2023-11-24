@@ -25,3 +25,8 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Disaster_Alleviation_Foundation/Disaster_Alleviation_Foundation.csproj'
+    configuration: '$(buildConfiguration)'
