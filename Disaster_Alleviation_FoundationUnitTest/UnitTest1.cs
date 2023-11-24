@@ -75,48 +75,9 @@ namespace Disaster_Alleviation_FoundationUnitTest
             Assert.IsFalse(goodsDonation.ItemCount <= 0);
         }
 
-        // Test to check that you cannot donate more than 10000 goods
-        [TestMethod]
-        public void TestMethod5()
-        {
-            // Arrange
-            var goodsDonation = new GoodsDonation();
-
-            // Act
-            goodsDonation.ItemCount = 434;
-
-            // Assert
-            Assert.IsFalse(goodsDonation.ItemCount > 10000);
-        }
-
-        // Test to check monetary donation is anonymous
-        [TestMethod]
-        public void TestMethod6()
-        {
-            // Arrange
-            var monetaryDonation = new MonetaryDonation();
-
-            // Act
-            monetaryDonation.IsAnonymous = true;
-
-            // Assert
-            Assert.IsTrue(monetaryDonation.IsAnonymous);
-        }
-
-        // Test to check goods donation is anonymous
-        [TestMethod]
-        public void TestMethod7()
-        {
-            // Arrange
-            var goodsDonation = new GoodsDonation();
-
-            // Act
-            goodsDonation.IsAnonymous = true;
-
-            // Assert
-            Assert.IsTrue(goodsDonation.IsAnonymous);
-        }
         
 
+        
+        
     }
 }

@@ -16,7 +16,7 @@ namespace Disaster_Alleviation_Foundation.Models
         public int GoodsId { get; set; }
 
 
-        public DateTime AllocationDate { get; set; } 
+        public DateTime AllocationDate { get; set; }
 
 
         public int ItemCount { get; set; }
