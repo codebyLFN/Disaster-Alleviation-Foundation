@@ -4,9 +4,59 @@
     ViewData["Title"] = "Register";
 }
 
+<style>
+    /* Add your CSS styles here */
+    h1 {
+        text-align: center;
+        color: purple; /* Purple text color */
+        margin-bottom: 20px;
+    }
+
+    .registration-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .col-md-4 {
+        background-color: #f8f9fa; /* Light gray background color */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-floating label {
+        color: orange; /* Orange label text color */
+    }
+
+    .form-control {
+        background-color: white; /* White input background color */
+        color: #343a40; /* Dark gray input text color */
+        border: 1px solid orange; /* Orange input border */
+    }
+
+        .form-control:focus {
+            background-color: white; /* White input background color on focus */
+            color: #343a40; /* Dark gray input text color on focus */
+            border: 1px solid orange; /* Orange input border on focus */
+        }
+
+    .btn-primary {
+        background-color: orange; /* Orange button background color */
+        color: purple; /* Purple button text color */
+        border-color: orange; /* Orange button border color */
+    }
+
+        .btn-primary:hover {
+            background-color: #ffa500; /* Darker orange on hover */
+            border-color: #ffa500; /* Darker orange border on hover */
+            color: purple; /* Purple button text color on hover */
+        }
+</style>
+
 <h1>@ViewData["Title"]</h1>
 
-<div class="row">
+<div class="registration-container">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Create a new account.</h2>
@@ -29,36 +79,6 @@
             </div>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
     </div>
 </div>
 

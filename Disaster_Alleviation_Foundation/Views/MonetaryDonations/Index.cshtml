@@ -4,50 +4,102 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Monetary Donations</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DonorName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAnonymous)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DonationDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAnonymous)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonationDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MonetaryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MonetaryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MonetaryId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-circle"></i>
+        Add Donation
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.DonorName)</th>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.IsAnonymous)</th>
+                <th>@Html.DisplayNameFor(model => model.DonationDate)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (item.IsAnonymous)
+                    {
+                        <td>
+                            Anonymous
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DonorName)
+                        </td>
+                    }
+                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IsAnonymous)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DonationDate)</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.MonetaryId">
+                            <i class="bi bi-info-circle"></i>
+                            Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Change background color of the page header */
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the "Add Donation" button */
+    .btn-primary {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-primary:hover {
+            background-color: #ff6347; /* Tomato red on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+    /* Style the table headers */
+    .thead-light th {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the table rows */
+    .table-bordered tbody tr:hover {
+        background-color: #ff6347; /* Tomato red on hover */
+        color: #fff; /* White text color on hover */
+    }
+
+    /* Style the action buttons */
+    .btn-sm {
+        margin-right: 5px;
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-sm:hover {
+            background-color: #ff6347; /* Tomato red on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+    }
+</style>

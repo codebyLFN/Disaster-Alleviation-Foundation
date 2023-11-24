@@ -4,55 +4,115 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Disaster</h4>
+<h1 class="display-4">Create Disaster</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RequiredAid" class="control-label"></label>
-                <input asp-for="RequiredAid" class="form-control" />
-                <span asp-validation-for="RequiredAid" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="StartDate" class="control-label">Start Date:</label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndDate" class="control-label">End Date:</label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Location" class="control-label">Location:</label>
+                    <input asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Description:</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RequiredAid" class="control-label">Required Aid:</label>
+                    <input asp-for="RequiredAid" class="form-control" />
+                    <span asp-validation-for="RequiredAid" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="container mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
 
+<style>
+    .display-4 {
+        background-color: purple; /* Purple background color */
+        color: orange; /* Orange text color */
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* Add margin to the top of containers */
+    .container {
+        margin-top: 20px;
+    }
+
+    /* Customize the label color for better visibility */
+    label.control-label {
+        color: purple; /* Purple label color */
+    }
+
+    /* Customize the dropdown list style */
+    .form-control {
+        background-color: #f1f1f1; /* Light gray background */
+        color: purple; /* Purple text color */
+        border: 1px solid orange; /* Orange border */
+    }
+
+    /* Customize the form-check label color */
+    .form-check-label {
+        color: purple; /* Purple label color */
+    }
+
+    /* Customize the button style */
+    .btn-primary {
+        background-color: orange; /* Orange background */
+        color: purple; /* Purple text color */
+        border-color: orange; /* Orange border */
+    }
+
+        .btn-primary:hover {
+            background-color: #ff8c00; /* Darker orange on hover */
+            border-color: #ff8c00; /* Darker orange border on hover */
+            color: purple; /* Purple text color on hover */
+        }
+
+    /* Customize the secondary button style */
+    .btn-secondary {
+        background-color: purple; /* Purple background */
+        color: orange; /* Orange text color */
+        border-color: purple; /* Purple border */
+    }
+
+        .btn-secondary:hover {
+            background-color: #8a2be2; /* Darker purple on hover */
+            border-color: #8a2be2; /* Darker purple border on hover */
+            color: orange; /* Orange text color on hover */
+        }
+</style>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

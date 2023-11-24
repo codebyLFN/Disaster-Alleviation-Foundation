@@ -4,39 +4,107 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="display-4">Monetary Allocation Details</h1>
 
 <div>
-    <h4>MonetaryAllocation</h4>
+    <h4>Monetary Allocation</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AllocationDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AllocationDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Disaster)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Disaster.DisasterId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MonetaryDonation)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MonetaryDonation.MonetaryId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AllocationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AllocationDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.AllocationId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model?.AllocationId" class="btn btn-primary">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model?.AllocationId" class="btn btn-danger">Delete</a>
 </div>
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+
+
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Style the page title */
+    .display-4 {
+        padding: 10px;
+        border-radius: 5px;
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the details container */
+    .col-md-6 {
+        background-color: #ffb833; /* Orange background color */
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    /* Style form labels (col-sm-2) */
+    .col-sm-2 {
+        color: purple; /* Purple text color */
+    }
+
+    /* Style form display values (col-sm-10) */
+    .col-sm-10 {
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the "Edit" button */
+    .btn-primary {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-primary:hover {
+            background-color: #ff6347; /* Tomato red on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+    /* Style the "Delete" button */
+    .btn-danger {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-danger:hover {
+            background-color: #ff6347; /* Tomato red on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+    /* Style the "Back to List" button */
+    .btn-secondary {
+        background-color: purple; /* Purple background color */
+        color: #fff; /* White text color */
+    }
+
+        .btn-secondary:hover {
+            background-color: #800080; /* Darker purple on hover */
+        }
+</style>

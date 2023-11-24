@@ -4,42 +4,96 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1 class="display-4">Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
+<h3 class="mt-4">Are you sure you want to delete this?</h3>
+<div class="mt-4">
     <h4>MonetaryDonation</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DonorName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DonorName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Amount)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Amount)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IsAnonymous)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IsAnonymous)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DonationDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DonationDate)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="MonetaryId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
     </form>
 </div>
+
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Style the page title */
+    .display-4 {
+        padding: 10px;
+        border-radius: 5px;
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the confirmation message */
+    .mt-4 {
+        margin-top: 20px;
+        color: purple; /* Purple text color */
+    }
+
+    /* Style form labels and display fields */
+    .col-sm-2 {
+        color: purple; /* Purple text color */
+    }
+
+    /* Style form input fields and display values */
+    .col-sm-10 {
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the "Delete" button */
+    .btn-danger {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-danger:hover {
+            background-color: #ff6347; /* Tomato red on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+    /* Style the "Back to List" button */
+    .btn-secondary {
+        background-color: purple; /* Purple background color */
+        color: #fff; /* White text color */
+    }
+
+        .btn-secondary:hover {
+            background-color: #800080; /* Darker purple on hover */
+        }
+
+    /* Style the horizontal rule (hr) */
+    hr {
+        border-color: #ffb833; /* Orange border color */
+    }
+</style>

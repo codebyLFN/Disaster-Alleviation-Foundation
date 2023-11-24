@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="display-4">Edit</h1>
 
-<h4>MonetaryDonation</h4>
+<h4 class="mt-4">MonetaryDonation</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -34,16 +34,73 @@
                 <span asp-validation-for="DonationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
 
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Style the page title */
+    .display-4 {
+        padding: 10px;
+        border-radius: 5px;
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the form container */
+    .col-md-4 {
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #ffb833; /* Orange background color */
+    }
+
+    /* Style form labels */
+    .control-label {
+        color: purple; /* Purple text color */
+    }
+
+    /* Style form input fields */
+    .form-control {
+        border-color: purple; /* Purple border color */
+    }
+
+    /* Style form validation error messages */
+    .text-danger {
+        color: red; /* Red error text color */
+    }
+
+    /* Style the form submit button */
+    .btn-primary {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-primary:hover {
+            background-color: #ff6347; /* Tomato red on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+    /* Style the "Back to List" button */
+    .btn-secondary {
+        background-color: purple; /* Purple background color */
+        color: #fff; /* White text color */
+    }
+
+        .btn-secondary:hover {
+            background-color: #800080; /* Darker purple on hover */
+        }
+</style>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

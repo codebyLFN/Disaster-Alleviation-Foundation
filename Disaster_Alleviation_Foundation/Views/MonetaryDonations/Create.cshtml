@@ -4,45 +4,108 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="display-4">Create Monetary Donation</h1>
 
-<h4>MonetaryDonation</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="DonorName" class="control-label"></label>
+                <label asp-for="DonorName" class="control-label">Donor Name</label>
                 <input asp-for="DonorName" class="form-control" />
                 <span asp-validation-for="DonorName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
+                <label asp-for="Amount" class="control-label">Amount</label>
                 <input asp-for="Amount" class="form-control" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAnonymous" /> @Html.DisplayNameFor(model => model.IsAnonymous)
-                </label>
-            </div>
+
             <div class="form-group">
-                <label asp-for="DonationDate" class="control-label"></label>
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="IsAnonymous" />
+                    <label class="form-check-label" for="IsAnonymous">
+                        @Html.DisplayNameFor(model => model.IsAnonymous)
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DonationDate" class="control-label">Donation Date</label>
                 <input asp-for="DonationDate" class="form-control" />
                 <span asp-validation-for="DonationDate" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
 
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Style the page title */
+    .display-4 {
+        padding: 10px;
+        border-radius: 5px;
+        color: purple; /* Purple text color */
+    }
+
+    /* Style the form container */
+    .col-md-6 {
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #ffb833; /* Orange background color */
+    }
+
+    /* Style form labels and input fields */
+    .form-group label {
+        color: purple; /* Purple label text color */
+    }
+
+    .form-control {
+        border: 1px solid #ffb833; /* Orange border color */
+        color: purple; /* Purple text color */
+    }
+
+    /* Style form validation messages */
+    .text-danger {
+        color: #ff6347; /* Tomato red text color for validation messages */
+    }
+
+    /* Style the form buttons */
+    .btn-primary {
+        background-color: #ffb833; /* Orange background color */
+        color: purple; /* Purple text color */
+    }
+
+        .btn-primary:hover {
+            background-color: #ffa500; /* Darker orange on hover */
+            color: purple; /* Purple text color on hover */
+        }
+
+    /* Style the back button */
+    .btn-secondary {
+        background-color: purple; /* Purple background color */
+        color: #fff; /* White text color */
+    }
+
+        .btn-secondary:hover {
+            background-color: #800080; /* Darker purple on hover */
+        }
+</style>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

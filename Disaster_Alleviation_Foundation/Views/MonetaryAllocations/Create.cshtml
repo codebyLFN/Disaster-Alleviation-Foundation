@@ -4,9 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>MonetaryAllocation</h4>
+<h1 class="display-4">Monetary Allocation</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,11 +12,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DisasterId" class="control-label"></label>
-                <select asp-for="DisasterId" class ="form-control" asp-items="ViewBag.DisasterId"></select>
+                <select asp-for="DisasterId" class="form-control" asp-items="ViewBag.DisasterId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="MonetaryId" class="control-label"></label>
-                <select asp-for="MonetaryId" class ="form-control" asp-items="ViewBag.MonetaryId"></select>
+                <select asp-for="MonetaryId" class="form-control" asp-items="ViewBag.MonetaryId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AllocationDate" class="control-label"></label>
@@ -38,9 +36,72 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
 
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Change background color of the page header */
+    .display-4 {
+        background-color: purple; /* Purple background color */
+        color: orange; /* Orange text color */
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* Add margin to the top of containers */
+    .container {
+        margin-top: 20px;
+    }
+
+    /* Customize the label color for better visibility */
+    label.control-label {
+        color: purple; /* Purple label color */
+    }
+
+    /* Customize the dropdown list style */
+    .form-control {
+        background-color: #f1f1f1; /* Light gray background */
+        color: purple; /* Purple text color */
+        border: 1px solid orange; /* Orange border */
+    }
+
+    /* Customize the form-check label color */
+    .form-check-label {
+        color: purple; /* Purple label color */
+    }
+
+    /* Customize the button style */
+    .btn-primary {
+        background-color: orange; /* Orange background */
+        color: purple; /* Purple text color */
+        border-color: orange; /* Orange border */
+    }
+
+        .btn-primary:hover {
+            background-color: #ff8c00; /* Darker orange on hover */
+            border-color: #ff8c00; /* Darker orange border on hover */
+            color: purple; /* Purple text color on hover */
+        }
+
+    /* Customize the secondary button style */
+    .btn-secondary {
+        background-color: purple; /* Purple background */
+        color: orange; /* Orange text color */
+        border-color: purple; /* Purple border */
+    }
+
+        .btn-secondary:hover {
+            background-color: #8a2be2; /* Darker purple on hover */
+            border-color: #8a2be2; /* Darker purple border on hover */
+            color: orange; /* Orange text color on hover */
+        }
+</style>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject RoleManager<IdentityRole> RoleManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Disaster_Alleviation_Foundation</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DAF</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,9 +27,46 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @if (User?.Identity?.IsAuthenticated == true)
+                        {
+                            // Check if the user is in the "Admin" role
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Disasters" asp-action="Index">Disasters</a>
+                                </li>
+                                <!-- drop down Allocation-->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Allocation
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="MonetaryAllocations" asp-action="Index">Money Allocation</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="GoodsAllocations" asp-action="Index">Goods Allocation</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Purchases" asp-action="Index">Purchase</a>
+                                </li>
+                            }
+
+                            // Check if the user is in the "Donor" role
+                            if (SignInManager.IsSignedIn(User))
+                            {
+                                <!-- drop down donations-->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Donations
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="MonetaryDonations" asp-action="Index">Money Donations</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="GoodsDonations" asp-action="Index">Goods Donations</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                       
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

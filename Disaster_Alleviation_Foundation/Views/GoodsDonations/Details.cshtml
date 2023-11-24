@@ -4,51 +4,106 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="display-4">Details</h1>
 
-<div>
-    <h4>GoodsDonation</h4>
+<div class="container mt-4">
+    <h4 class="mb-4">Goods Donation</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonorName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DonorName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ItemCount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsAnonymous)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsAnonymous)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonationDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DonationDate)
-        </dd>
+        <dt class="col-sm-2">Donor Name:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.DonorName)</dd>
+        <dt class="col-sm-2">Category:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Category)</dd>
+        <dt class="col-sm-2">Description:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+        <dt class="col-sm-2">Item Count:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.ItemCount)</dd>
+        <dt class="col-sm-2">Is Anonymous:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.IsAnonymous)</dd>
+        <dt class="col-sm-2">Donation Date:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.DonationDate)</dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.GoodsId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="container mt-4">
+    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@Model?.GoodsId">
+        <i class="bi bi-trash"></i>
+        Delete
+    </a>
+    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@Model?.GoodsId">
+        <i class="bi bi-pencil"></i>
+        Edit
+    </a>
 </div>
+<div class="container mt-4">
+    <a class="btn btn-secondary btn-sm" asp-action="Index">
+        <i class="bi bi-arrow-left"></i>
+        Back to List
+    </a>
+</div>
+
+<style>
+    /* Add any custom styles here */
+    /* For example, you can customize the background color or font size */
+
+    /* Change background color of the page header */
+    .display-4 {
+        background-color: purple; /* Purple background color */
+        color: orange; /* Orange text color */
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* Add margin to the top of containers */
+    .container {
+        margin-top: 20px;
+    }
+
+    /* Customize the label color for better visibility */
+    dt.col-sm-2 {
+        color: purple; /* Purple label color */
+    }
+
+    /* Style the action buttons */
+    .btn-sm {
+        margin-right: 5px;
+    }
+
+    /* Customize the delete button style */
+    .btn-danger {
+        background-color: orange; /* Orange background */
+        color: purple; /* Purple text color */
+        border-color: orange; /* Orange border */
+    }
+
+        .btn-danger:hover {
+            background-color: #ff8c00; /* Darker orange on hover */
+            border-color: #ff8c00; /* Darker orange border on hover */
+            color: purple; /* Purple text color on hover */
+        }
+
+    /* Customize the edit button style */
+    .btn-primary {
+        background-color: purple; /* Purple background */
+        color: orange; /* Orange text color */
+        border-color: purple; /* Purple border */
+    }
+
+        .btn-primary:hover {
+            background-color: #8a2be2; /* Darker purple on hover */
+            border-color: #8a2be2; /* Darker purple border on hover */
+            color: orange; /* Orange text color on hover */
+        }
+
+    /* Customize the "Back to List" button style */
+    .btn-secondary {
+        background-color: purple; /* Purple background */
+        color: orange; /* Orange text color */
+        border-color: purple; /* Purple border */
+    }
+
+        .btn-secondary:hover {
+            background-color: #8a2be2; /* Darker purple on hover */
+            border-color: #8a2be2; /* Darker purple border on hover */
+            color: orange; /* Orange text color on hover */
+        }
+</style>
