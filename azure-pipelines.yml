@@ -15,3 +15,8 @@ variables:
 steps:
 - script: dotnet build Disaster_Alleviation_Foundation.sln --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'Disaster_Alleviation_FoundationUnitTest/Disaster_Alleviation_FoundationUnitTest.csproj'
+    testRunTitle: 'Disaster_Alleviation_FoundationUnitTest'
