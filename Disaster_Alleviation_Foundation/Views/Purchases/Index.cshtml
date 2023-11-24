@@ -4,14 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="color: purple;">Purchase</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success" style="background-color: orange; color: white;">Create Purchase</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped" style="border: 2px solid purple; color: purple;">
+    <thead style="background-color: orange; color: white;">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Disaster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoodsDonation)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.PurchaseDate)
             </th>
@@ -19,35 +25,46 @@
                 @Html.DisplayNameFor(model => model.AmountSpent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Disaster)
+                Actions
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GoodsDonation)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountSpent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Disaster.DisasterId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GoodsDonation.GoodsId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PurchaseId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PurchaseId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PurchaseId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disaster.DisasterId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoodsDonation.GoodsId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountSpent)
+                </td>
+
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.PurchaseId">
+                        <i class="bi bi-info-circle"></i>
+                        Details
+                    </a>
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+    }
+
+    h1 {
+        border-bottom: 2px solid purple;
+        padding-bottom: 10px;
+    }
+</style>

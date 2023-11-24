@@ -4,43 +4,49 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Purchase</h4>
+<h1 style="color: green;">Add Purchase</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="DisasterId" class="control-label"></label>
-                <select asp-for="DisasterId" class ="form-control" asp-items="ViewBag.DisasterId"></select>
+                <label asp-for="DisasterId" class="control-label" style="color: purple;"></label>
+                <select asp-for="DisasterId" class="form-control" asp-items="ViewBag.DisasterId" style="border: 1px solid purple;"></select>
             </div>
             <div class="form-group">
-                <label asp-for="GoodsId" class="control-label"></label>
-                <select asp-for="GoodsId" class ="form-control" asp-items="ViewBag.GoodsId"></select>
+                <label asp-for="GoodsId" class="control-label" style="color: purple;"></label>
+                <select asp-for="GoodsId" class="form-control" asp-items="ViewBag.GoodsId" style="border: 1px solid purple;"></select>
             </div>
             <div class="form-group">
-                <label asp-for="PurchaseDate" class="control-label"></label>
-                <input asp-for="PurchaseDate" class="form-control" />
-                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                <label asp-for="PurchaseDate" class="control-label" style="color: purple;"></label>
+                <input asp-for="PurchaseDate" class="form-control" style="border: 1px solid purple;" />
+                <span asp-validation-for="PurchaseDate" class="text-danger" style="color: red;"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AmountSpent" class="control-label"></label>
-                <input asp-for="AmountSpent" class="form-control" />
-                <span asp-validation-for="AmountSpent" class="text-danger"></span>
+                <label asp-for="AmountSpent" class="control-label" style="color: purple;"></label>
+                <input asp-for="AmountSpent" class="form-control" style="border: 1px solid purple;" />
+                <span asp-validation-for="AmountSpent" class="text-danger" style="color: red;"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" style="background-color: green; border-color: green; color: white;" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary" style="background-color: orange; color: white;">Back to List</a>
 </div>
 
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+    }
+</style>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
