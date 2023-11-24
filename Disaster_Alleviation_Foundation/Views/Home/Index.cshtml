@@ -2,7 +2,217 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="div_WelcomeText" style="background-color: purple; color: orange; padding: 20px; text-align: center;">
+    <h1 class="h1">Welcome to Disaster Alleviation Foundation</h1>
+    <p>Connect with donors and make a difference!</p>
 </div>
+
+<h2 class="mt-5" style="color: orange;">Totals</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Total Money Donated</th>
+            <th>R @Model.TotalMoneyDonated</th>
+        </tr>
+        <tr>
+            <th>Total Available Money</th>
+            <th>R @Model.AvailableMoney</th>
+        </tr>
+        <tr>
+            <td>Total Goods Donated</td>
+            <td>@Model.TotalGoodsDonated</td>
+        </tr>
+        <tr>
+            <td>Total Available Goods</td>
+            <td>@Model.AvailableGoods</td>
+        </tr>
+    </thead>
+</table>
+
+<div id="div_MoneyDonos">
+    <h2 class="h2 mt-5" style="color: orange;">Disasters and Donors</h2>
+
+    @foreach (var disaster in Model.Disasters)
+    {
+        <div class="donation-section" style="background-color: white; color: orange;">
+            <h2 class="h2">
+                @disaster.StartDate.ToShortDateString().ToUpper() - @disaster.EndDate.ToShortDateString().ToUpper()
+                <span style="float: right; color: @(disaster.IsActive ? "green" : "red");">
+                    @(disaster.IsActive ? "Active" : "Not Active")
+                </span>
+            </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Location</th>
+                        <th style="width: 40%;">Description</th>
+                        <th style="width: 40%;">Required Aids</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@disaster.Location</td>
+                        <td>
+                            @if (disaster.Description.Length > 60)
+                            {
+                                @disaster.Description.Substring(0, 60)
+                            }
+                            else
+                            {
+                                @disaster.Description
+                            }
+                        </td>
+                        <td>@disaster.RequiredAid</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @if (disaster.MonetaryAllocations != null && disaster.MonetaryAllocations.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Monetary Allocation Date</th>
+                            <th style="width: 40%;">Monetary Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var allocation in disaster.MonetaryAllocations)
+                        {
+                            <tr>
+                                <td>@allocation.AllocationDate</td>
+                                <td>@allocation.Amount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+            @if (disaster.GoodsAllocation != null && disaster.GoodsAllocation.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Goods Allocation Date</th>
+                            <th style="width: 40%;">Goods Item Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var allocation in disaster.GoodsAllocation)
+                        {
+                            <tr>
+                                <td>@allocation.AllocationDate</td>
+                                <td>@allocation.ItemCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    }
+
+    <h2 class="mt-5" style="color: orange;">Monetary Donors</h2>
+    @foreach (var monetaryDonation in Model.MonetaryDonations)
+    {
+        <div class="donation-section" style="background-color: white; color: orange;">
+            <h2 class="h2">
+                @if (monetaryDonation.IsAnonymous)
+                {
+                    // Display Anonymous
+                    @("Anonymous")
+                }
+                else
+                {
+                    @monetaryDonation.DonorName
+                }
+            </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Donation Amount</th>
+                        <th style="width: 40%;">Donation Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@monetaryDonation.Amount</td>
+                        <td>@monetaryDonation.DonationDate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <h2 class="mt-5" style="color: orange;">Goods Donors</h2>
+    @foreach (var goodsDonation in Model.GoodsDonations)
+    {
+        <div class="donation-section" style="background-color: white; color: orange;">
+            <h2 class="h2">
+                @if (goodsDonation.IsAnonymous)
+                {
+                    // Display Anonymous
+                    @("Anonymous")
+                }
+                else
+                {
+                    @goodsDonation.DonorName
+                }
+            </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Goods Category</th>
+                        <th style="width: 20%;">Goods Item Count</th>
+                        <th style="width: 40%;">Donation Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@goodsDonation.Category</td>
+                        <td>@goodsDonation.ItemCount</td>
+                        <td>@goodsDonation.DonationDate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<style>
+    #div_MoneyDonos {
+        margin: 3%;
+        padding: 10px;
+    }
+
+    .donation-section {
+        background-color: white;
+        color: orange;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid orange;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .h2 {
+        font-size: 20px;
+    }
+
+    .mt-5 {
+        margin-top: 3rem !important;
+    }
+</style>
