@@ -21,3 +21,7 @@ steps:
     projects: 'Disaster_Alleviation_FoundationUnitTest/Disaster_Alleviation_FoundationUnitTest.csproj'
     testRunTitle: 'Disaster_Alleviation_FoundationUnitTest'
     configuration: '$(buildConfiguration)'
+- task: DotNetCoreCLI@1
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
