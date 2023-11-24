@@ -18,5 +18,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'Disaster_Alleviation_FoundationUnitTest/Disaster_Alleviation_FoundationUnitTest.csproj'
+    projects: '/**Disaster_Alleviation_FoundationUnitTest.csproj'
     configuration: '$(buildConfiguration)'
