@@ -16,12 +16,14 @@ steps:
 - script: dotnet build Disaster_Alleviation_Foundation.sln --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
+  name: 'RunUnitTest'
   inputs:
     command: 'test'
     projects: 'Disaster_Alleviation_FoundationUnitTest/Disaster_Alleviation_FoundationUnitTest.csproj'
     testRunTitle: 'Disaster_Alleviation_FoundationUnitTest'
     configuration: '$(buildConfiguration)'
 - task: DotNetCoreCLI@2
+  name: 'Build'
   inputs:
     command: 'build'
     projects: 'Disaster_Alleviation_Foundation/Disaster_Alleviation_Foundation.csproj'
