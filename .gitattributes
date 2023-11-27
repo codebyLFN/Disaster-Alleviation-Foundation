@@ -2,7 +2,9 @@
 * text=auto
 
 # Set linguist-language for Razor pages
-*.cshtml linguist-language=C#
+*.c# linguist-language=C# 56.8%
+*.html linguist-language=HTML 42.5%
+* linguist-language=Other 0.7%
 
 # Set merge driver for project and solution files
 *.csproj merge=binary
