@@ -2,7 +2,7 @@
 * text=auto
 
 # Set linguist-language for Razor pages
-
+*.cshtml linguist-language=C#
 
 # Set merge driver for project and solution files
 *.csproj merge=binary
@@ -33,3 +33,21 @@
 *.PDF diff=astextplain
 *.rtf diff=astextplain
 *.RTF diff=astextplain
+
+# Set linguist-language for JavaScript files
+*.js linguist-language=JavaScript
+
+# Set linguist-language for CSS files
+*.css linguist-language=CSS
+
+# Set linguist-language for TypeScript files
+*.ts linguist-language=TypeScript
+
+# Set linguist-language for Vue files
+*.vue linguist-language=Vue
+
+# Set linguist-language for XML files
+*.xml linguist-language=XML
+
+# Set linguist-language for Markdown files
+*.md linguist-language=Markdown
