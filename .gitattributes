@@ -57,6 +57,9 @@
 #*.DOCX  diff=astextplain
 #*.dot   diff=astextplain
 #*.DOT   diff=astextplain
+
+
+inguist-detectable=false
 #*.pdf   diff=astextplain
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
